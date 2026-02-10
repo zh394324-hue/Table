@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول المذاكرة الاحترافي - تانية ثانوي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-main: #102a43;
+            --text-sub: #486581;
+            --border-opacity: 0.1;
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark-mode {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --card-bg: rgba(30, 41, 59, 0.9);
+            --text-main: #ffffff;
+            --text-sub: #cbd5e1;
+            --border-opacity: 0.2;
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            transition: background 0.5s ease, color 0.5s ease;
+            min-height: 100vh;
+        }
+        .main-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, var(--border-opacity));
+            transition: all 0.5s ease;
+            box-shadow: var(--shadow);
+        }
+        .day-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .day-item:hover {
+            transform: scale(1.02) translateX(-5px);
+            filter: brightness(1.1);
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #94a3b8;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px; width: 18px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider { background-color: #6366f1; }
+        input:checked + .slider:before { transform: translateX(26px); }
+        .power-text {
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-start py-12 px-4">
+    <div class="w-full max-w-2xl flex justify-between items-center mb-8 px-2">
+        <div class="flex items-center gap-3 bg-white/10 p-2 rounded-full backdrop-blur-md border border-white/20 shadow-sm">
+            <span class="text-xs font-bold mr-2">🌞 صباحي</span>
+            <label class="switch">
+                <input type="checkbox" id="modeToggle" onchange="toggleMode()">
+                <span class="slider"></span>
+            </label>
+            <span class="text-xs font-bold ml-2">🌙 مسائي</span>
+        </div>
+        <div class="text-xs font-bold opacity-70">العمر: ١٦ سنة | تانية ثانوي 🎓</div>
+    </div>
+    <div class="main-card w-full max-w-2xl rounded-[40px] p-8 md:p-12">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight leading-tight">🚀 منصة المذاكرة الباور</h1>
+            <p class="text-lg opacity-80 font-medium">خطتك الأسبوعية للنجاح والتميز</p>
+        </div>
+        <div class="grid gap-6">
+            <div class="day-item flex items-center p-6 bg-blue-500/10 rounded-[24px] border-r-[12px] border-blue-500 shadow-sm">
+                <div class="w-24 md:w-32 text-xl font-black text-blue-600 dark:text-blue-400">السبت</div>
+                <div class="flex-1 text-2xl md:text-3xl font-black power-text">رياضة بحتة 🔥</div>
+            </div>
+            <div class="day-item flex items-center p-6 bg-indigo-500/10 rounded-[24px] border-r-[12px] border-indigo-500 shadow-sm">
+                <div class="w-24 md:w-32 text-xl font-black text-indigo-600 dark:text-indigo-400">الأحد</div>
+                <div class="flex-1 text-2xl md:text-3xl font-black power-text">رياضة تطبيقية 🔥</div>
+            </div>
+            <div class="day-item flex items-center p-6 bg-rose-500/10 rounded-[24px] border-r-[12px] border-rose-500 shadow-sm">
+                <div class="w-24 md:w-32 text-xl font-black text-rose-600 dark:text-rose-400">الاثنين</div>
+                <div class="flex-1 text-2xl md:text-3xl font-black power-text">فيزياء 🔥⚡</div>
+            </div>
+            <div class="day-item flex items-center p-6 bg-emerald-500/10 rounded-[24px] border-r-[12px] border-emerald-500 shadow-sm">
+                <div class="w-24 md:w-32 text-xl font-black text-emerald-600 dark:text-emerald-400">الثلاثاء</div>
+                <div class="flex-1 text-2xl md:text-3xl font-black power-text">كيمياء 🔥</div>
+            </div>
+            <div class="day-item flex items-center p-6 bg-amber-500/10 rounded-[24px] border-r-[12px] border-amber-500 shadow-sm">
+                <div class="w-24 md:w-32 text-xl font-black text-amber-600 dark:text-amber-400">الأربعاء</div>
+                <div class="flex-1 text-2xl md:text-3xl font-black power-text">إنجليزي + ألماني 🔥</div>
+            </div>
+            <div class="day-item flex items-center p-6 bg-purple-500/10 rounded-[24px] border-r-[12px] border-purple-500 shadow-sm">
+                <div class="w-24 md:w-32 text-xl font-black text-purple-600 dark:text-purple-400">الخميس</div>
+                <div class="flex-1 text-2xl md:text-3xl font-black power-text">عربي + تاريخ 🔥</div>
+            </div>
+            <div class="day-item flex items-center p-7 bg-cyan-500/20 rounded-[24px] border-r-[12px] border-cyan-400 shadow-lg mt-4 transform scale-105 ring-2 ring-cyan-400/30">
+                <div class="w-24 md:w-32 text-xl font-black text-cyan-600 dark:text-cyan-300 italic">الجمعة</div>
+                <div class="flex-1 text-2xl md:text-3xl font-black italic underline decoration-4 decoration-cyan-400 underline-offset-8">مراجعة شاملة ⚡✅</div>
+            </div>
+        </div>
+        <div class="mt-16 text-center border-t border-gray-500/10 pt-8">
+            <p class="text-sm font-bold opacity-60 italic mb-2">"لا يتوقف النجاح على الموهبة، بل على الإصرار والجدول المنظم"</p>
+        </div>
+    </div>
+    <script>function toggleMode() { document.body.classList.toggle('dark-mode'); }</script>
+</body>
+</html>
